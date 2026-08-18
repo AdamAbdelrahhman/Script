@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سكريبت العرض — Website Anatomy</title>
+<style>
+  :root{
+    --bg:#0a0a0f;
+    --bg-card:#13131a;
+    --border:#232330;
+    --text:#e8e6f0;
+    --muted:#8b8a9a;
+    --gold:#d4af37;
+    --blue:#4a90d9;
+    --yellow:#e6c34a;
+    --green:#5cb87a;
+    --black-hat:#9b8fd9;
+    --red:#d9605a;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:radial-gradient(ellipse at top, #16161f 0%, var(--bg) 60%);
+    color:var(--text);
+    font-family:'Segoe UI', Tahoma, 'Cairo', sans-serif;
+    line-height:1.9;
+    padding:40px 16px 80px;
+  }
+  .wrap{max-width:820px; margin:0 auto;}
+  header.top{
+    text-align:center;
+    margin-bottom:36px;
+    padding-bottom:28px;
+    border-bottom:1px solid var(--border);
+  }
+  header.top h1{
+    font-size:2.1rem;
+    background:linear-gradient(90deg, var(--gold), #f4e5a1);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    margin-bottom:8px;
+  }
+  header.top p{color:var(--muted); font-size:.95rem;}
+  header.top a{color:var(--gold); text-decoration:none;}
+
+  .table-wrap{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:18px;
+    margin-bottom:40px;
+    overflow-x:auto;
+  }
+  table{width:100%; border-collapse:collapse; font-size:.92rem;}
+  th, td{padding:10px 12px; text-align:right; border-bottom:1px solid var(--border);}
+  th{color:var(--gold); font-weight:600;}
+  tr:last-child td{border-bottom:none;}
+
+  .en{
+    direction:ltr;
+    display:inline-block;
+    unicode-bidi:isolate;
+    font-family:'Consolas', monospace;
+    color:#f4e5a1;
+    font-size:.95em;
+  }
+
+  .section{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:28px 26px;
+    margin-bottom:26px;
+    position:relative;
+    border-inline-start:4px solid var(--gold);
+  }
+  .section .meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .section .idx{
+    font-size:.8rem;
+    color:var(--muted);
+    letter-spacing:1px;
+  }
+  .section h2{
+    font-size:1.4rem;
+    color:var(--gold);
+    margin-top:4px;
+  }
+  .speaker{
+    font-size:.85rem;
+    background:#1e1e29;
+    border:1px solid var(--border);
+    padding:5px 14px;
+    border-radius:100px;
+    color:var(--text);
+  }
+  .hats{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:18px;}
+  .hat{
+    font-size:.78rem;
+    padding:4px 10px;
+    border-radius:100px;
+    border:1px solid var(--border);
+    background:#1a1a24;
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+  }
+  .dot{width:8px; height:8px; border-radius:50%; display:inline-block;}
+  .dot.blue{background:var(--blue);}
+  .dot.white{background:#fff;}
+  .dot.yellow{background:var(--yellow);}
+  .dot.green{background:var(--green);}
+  .dot.black{background:var(--black-hat);}
+  .dot.red{background:var(--red);}
+
+  .script p{margin-bottom:14px; color:#d6d4e0;}
+  .script ol, .script ul{
+    margin:14px 26px 14px 0;
+    padding:0;
+  }
+  .script li{margin-bottom:8px; color:#d6d4e0;}
+  .script strong{color:var(--gold);}
+  .warn{
+    margin-top:16px;
+    background:#1f1815;
+    border:1px solid #4a3a25;
+    border-radius:10px;
+    padding:14px 16px;
+    color:#f0d9a0;
+    font-size:.95rem;
+  }
+
+  .tip{
+    background:linear-gradient(135deg, #1a1420, #14141e);
+    border:1px solid var(--gold);
+    border-radius:14px;
+    padding:22px 24px;
+    margin-top:10px;
+  }
+  .tip h3{color:var(--gold); margin-bottom:10px; font-size:1.05rem;}
+  .tip p{color:#d6d4e0;}
+
+  @media print{
+    body{background:#fff; color:#000;}
+    .section, .table-wrap, .tip{background:#fff; border:1px solid #ccc;}
+    .section h2, header.top h1{-webkit-text-fill-color:#000; color:#000;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <h1>سكريبت العرض</h1>
+    <p>Website Anatomy — <a href="https://adamabdelrahhman.github.io/FirstPresentation/" target="_blank">adamabdelrahhman.github.io/FirstPresentation</a></p>
+  </header>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>الجزء</th><th>المتحدث</th><th>القبعة</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>الافتتاحية</td><td>عمر</td><td>🔵 Blue</td></tr>
+        <tr><td>2</td><td><span class="en">Header</span></td><td>آدم</td><td>⚪ White + 🟡 Yellow</td></tr>
+        <tr><td>3</td><td><span class="en">Body</span></td><td>عمر</td><td>⚪ White + 🟢 Green</td></tr>
+        <tr><td>4</td><td><span class="en">Footer</span></td><td>كريم</td><td>⚪ White + ⚫ Black</td></tr>
+        <tr><td>5</td><td><span class="en">Code</span></td><td>كريم</td><td>⚪ White + 🔴 Red</td></tr>
+        <tr><td>6</td><td><span class="en">Setup</span></td><td>كريم</td><td>⚫ Black</td></tr>
+        <tr><td>7</td><td>الختام</td><td>آدم</td><td>🔵 Blue + 🟡 Yellow</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 1: الافتتاحية -->
+  <section class="section">
+    <div class="meta">
+      <div>
+        <div class="idx">١ / ٧</div>
+        <h2>الافتتاحية</h2>
+      </div>
+      <div class="speaker">🎤 عمر</div>
+    </div>
+    <div class="hats">
+      <span class="hat"><span class="dot blue"></span> Blue — التحكم والخطة</span>
+    </div>
+    <div class="script">
+      <p>"صباح الخير يا جماعة، النهاردة هنتكلم عن حاجة كل واحد فينا بيستخدمها كل يوم من غير ما ياخد باله — وهي إن أي <span class="en">website</span> في الدنيا مبني من نفس الهيكل العظمي بالظبط.</p>
+      <p>مهما اختلف الشكل أو الألوان، هتلاقي فيه ثلاث بلوكات أساسية: <span class="en">Header</span> فوق، <span class="en">Body</span> في النص، و<span class="en">Footer</span> تحت. وهنوريكم كمان الكود اللي بيبني الحاجات دي، وحاجة اسمها <span class="en">Setup</span> بتشتغل من ورا الكواليس من غير ما حد يشوفها.</p>
+      <p>خلونا نبدأ بالـ <span class="en">Header</span> مع آدم."</p>
+    </div>
+  </section>
+
+  <!-- 2: Header -->
+  <section class="section">
+    <div class="meta">
+      <div>
+        <div class="idx">٢ / ٧</div>
+        <h2><span class="en">Header</span></h2>
+      </div>
+      <div class="speaker">🎤 آدم</div>
+    </div>
+    <div class="hats">
+      <span class="hat"><span class="dot white"></span> White — حقائق</span>
+      <span class="hat"><span class="dot yellow"></span> Yellow — فايدة</span>
+    </div>
+    <div class="script">
+      <p>"الـ <span class="en">Header</span> هو أول حاجة بتقابل الزائر في الصفحة، وبيقع في أعلى الـ <span class="en">body</span> مباشرة قبل أي حاجة تانية. وأهميته إن أسلوبه وألوانه بتحدد شكل باقي الصفحة كلها.</p>
+      <p>بيتكون من 4 عناصر أساسية:</p>
+      <ol>
+        <li><strong>Logo & اسم الموقع</strong> — أول حاجة بيشوفها الزائر.</li>
+        <li><strong>Tagline (اختياري)</strong> — جملة قصيرة بتوصف الموقع أو الشركة.</li>
+        <li><strong>Navigation bar</strong> — يعني الـ <span class="en">nav</span> اللي فيه لينكات زي <span class="en">Home</span> و<span class="en">About</span> و<span class="en">Services</span> و<span class="en">Contact</span> للتنقل بين الصفحات.</li>
+        <li><strong>بيحدد الـ Tone</strong> — الألوان والستايل بتاعته بتكمل على طول الصفحة.</li>
+      </ol>
+      <p>يعني ببساطة، الـ <span class="en">Header</span> هو الانطباع الأول والبوصلة اللي بتوجه الزائر."</p>
+    </div>
+  </section>
+
+  <!-- 3: Body -->
+  <section class="section">
+    <div class="meta">
+      <div>
+        <div class="idx">٣ / ٧</div>
+        <h2><span class="en">Body</span></h2>
+      </div>
+      <div class="speaker">🎤 عمر</div>
+    </div>
+    <div class="hats">
+      <span class="hat"><span class="dot white"></span> White — حقائق</span>
+      <span class="hat"><span class="dot green"></span> Green — إبداع</span>
+    </div>
+    <div class="script">
+      <p>"لو الـ <span class="en">Header</span> هو الترحيب، الـ <span class="en">Body</span> هو قلب الصفحة. هنا بيعيش أغلب ارتفاع الصفحة، وكل المحتوى الفريد بتاعها — نصوص، صور، كروت، فورمز، أي حاجة الصفحة أصلاً موجودة عشانها.</p>
+      <p>بيتكون من 3 عناصر:</p>
+      <ol>
+        <li><strong>Hero section</strong> — عنوان كبير وصورة أو مقدمة لافتة، بتيجي على طول بعد الـ <span class="en">Header</span>.</li>
+        <li><strong>Sections</strong> — يعني <span class="en">tag</span> اسمه <span class="en">section</span> بيقسم المحتوى لقطع أصغر عشان يبقى منظم وسهل القراءة.</li>
+        <li><strong>Sidebar</strong> — أو الـ <span class="en">aside</span>، عمود جانبي اختياري لروابط إضافية أو إعلانات أو معلومات مرتبطة.</li>
+      </ol>
+      <p>الحلو في الموضوع إن نفس المكونات دي ممكن تتصمم بألف شكل مختلف حسب فكرة الموقع — ده اللي بيدي كل موقع شخصيته."</p>
+    </div>
+  </section>
+
+  <!-- 4: Footer -->
+  <section class="section">
+    <div class="meta">
+      <div>
+        <div class="idx">٤ / ٧</div>
+        <h2><span class="en">Footer</span></h2>
+      </div>
+      <div class="speaker">🎤 كريم</div>
+    </div>
+    <div class="hats">
+      <span class="hat"><span class="dot white"></span> White — حقائق</span>
+      <span class="hat"><span class="dot black"></span> Black — تنبيه</span>
+    </div>
+    <div class="script">
+      <p>"وصلنا للـ <span class="en">Footer</span>، وهو الجزء اللي بيقفل الصفحة بنفس الطريقة مهما كان المحتوى اللي فوقه طويل أو قصير.</p>
+      <p>بيتكون من 4 عناصر:</p>
+      <ol>
+        <li><strong>Copyright info</strong> — رمز © والسنة واسم الموقع أو الشركة.</li>
+        <li><strong>Social media icons</strong> — لينكات سريعة لإنستجرام وتيك توك وغيرها.</li>
+        <li><strong>Contact details</strong> — إيميل أو رقم تليفون أو عنوان للتواصل.</li>
+        <li><strong>Secondary links</strong> — زي <span class="en">Privacy Policy</span> و<span class="en">Terms of Service</span>، يعني الكلام الصغير اللي محدش بيقراه بس لازم يكون موجود.</li>
+      </ol>
+      <div class="warn">⚠️ تنبيه: كتير من المواقع بتنسى الـ <span class="en">Footer</span> أو بتعمله ضعيف، بس هو فعلياً بيدي انطباع الاحترافية والمصداقية للموقع.</div>
+    </div>
+  </section>
+
+  <!-- 5: Code -->
+  <section class="section">
+    <div class="meta">
+      <div>
+        <div class="idx">٥ / ٧</div>
+        <h2><span class="en">Code</span></h2>
+      </div>
+      <div class="speaker">🎤 كريم</div>
+    </div>
+    <div class="hats">
+      <span class="hat"><span class="dot white"></span> White — حقائق</span>
+      <span class="hat"><span class="dot red"></span> Red — أول انطباع</span>
+    </div>
+    <div class="script">
+      <p>"دلوقتي هنشوف نفس الهيكل ده لما يتحول لكود فعلي. كل تاج اللي هتشوفوه معمولّه لون يطابق الجزء اللي اتكلمنا عنه.</p>
+      <p>كل حاجة بتعيش جوه <span class="en">tag</span> اسمه <span class="en">body</span>، وبتتقسم كالتالي:</p>
+      <ul>
+        <li>الـ <span class="en">header</span> فيه جوه الـ <span class="en">nav</span> بتاعته.</li>
+        <li>الـ <span class="en">main</span> فيه الـ <span class="en">section</span> اللي جواها <span class="en">article</span>، وجنبها <span class="en">aside</span>.</li>
+        <li>والـ <span class="en">footer</span> فيه الـ <span class="en">copyright</span> والروابط.</li>
+      </ul>
+      <p>أول ما تشوف الكود، هتلاقيه بسيط جداً — مش مخيف زي ما بعض الناس بيفتكروا. دي أكتر حاجة حابب أوصلها: الـ <span class="en">HTML</span> أصلاً مجرد صناديق متداخلة في بعض."</p>
+    </div>
+  </section>
+
+  <!-- 6: Setup -->
+  <section class="section">
+    <div class="meta">
+      <div>
+        <div class="idx">٦ / ٧</div>
+        <h2><span class="en">Setup</span></h2>
+      </div>
+      <div class="speaker">🎤 كريم</div>
+    </div>
+    <div class="hats">
+      <span class="hat"><span class="dot black"></span> Black — تنبيه من الغلطة الشائعة</span>
+    </div>
+    <div class="script">
+      <p>"في جزء تاني موجود في كل صفحة بس محدش بيشوفه على الشاشة، وهو الـ <span class="en">Setup</span>. ده الكلام اللي بيخلي كل حاجة تانية تشتغل:</p>
+      <ul>
+        <li><span class="en">&lt;!DOCTYPE html&gt;</span> — بيقول للمتصفح إن الصفحة مكتوبة بـ <span class="en">HTML5</span>.</li>
+        <li><span class="en">&lt;html lang="en"&gt;</span> — العنصر الجذر اللي كل تاج تاني عايش جواه.</li>
+        <li><span class="en">&lt;head&gt;...&lt;/head&gt;</span> — معلومات خلف الكواليس بس، مفيهاش حاجة ظاهرة على الصفحة.</li>
+        <li><span class="en">&lt;meta charset&gt;</span> — بيضمن إن النصوص والرموز الخاصة تتعرض صح.</li>
+        <li><span class="en">&lt;meta viewport&gt;</span> — بيخلي الصفحة تتناسب مع شاشة الموبايل والتابلت.</li>
+        <li><span class="en">&lt;title&gt;</span> و<span class="en">&lt;link&gt;</span> — اسم الصفحة في التاب، والربط بملف الـ <span class="en">CSS</span>.</li>
+      </ul>
+      <div class="warn">⚠️ أهم تنبيه: فيه لخبطة شائعة جداً بين <span class="en">&lt;head&gt;</span> و<span class="en">&lt;header&gt;</span>. الأول ده إعدادات مخفية تماماً، والتاني ده الجزء الظاهر فوق الصفحة. نفس الكلمة تقريباً، بس شغلهم مختلف خالص."</div>
+    </div>
+  </section>
+
+  <!-- 7: الختام -->
+  <section class="section">
+    <div class="meta">
+      <div>
+        <div class="idx">٧ / ٧</div>
+        <h2>الختام</h2>
+      </div>
+      <div class="speaker">🎤 آدم</div>
+    </div>
+    <div class="hats">
+      <span class="hat"><span class="dot blue"></span> Blue — تلخيص</span>
+      <span class="hat"><span class="dot yellow"></span> Yellow — فايدة</span>
+    </div>
+    <div class="script">
+      <p>"وبكده نكون قدرنا نفكك أي <span class="en">website</span> لثلاث عضمات أساسية: <span class="en">Header</span> يرحب بيك، <span class="en">Body</span> يديك المحتوى، <span class="en">Footer</span> يقفل بيك الصفحة. وورانا كمان الكود اللي بيربط الحتت دي ببعض، والـ <span class="en">Setup</span> اللي بيشغل كل حاجة من ورا الستار.</p>
+      <p>الفايدة الحقيقية من الموضوع ده: بعد النهاردة، أي موقع هتفتحه هتقدر تبصله وتقول فوراً — ده الـ <span class="en">Header</span>، ده الـ <span class="en">Body</span>، وده الـ <span class="en">Footer</span>. مش هتحتاج حد يشرحلك تاني.</p>
+      <p>شكراً لحضوركم، ولو فيه أي سؤال إحنا جاهزين."</p>
+    </div>
+  </section>
+
+  <div class="tip">
+    <h3>💡 نصيحة سريعة قبل بكره</h3>
+    <p>كل واحد يقرا جزءه مرتين بصوت عالي، ويركز بس على العناوين (٠١-٠٢-٠٣-٠٤) بتاعت جزءه لأنها هي اللي بتفتكرك بالترتيب، والكلام حواليها هيجيلك طبيعي وانت بتتكلم.</p>
+  </div>
+
+</div>
+</body>
+</html>
