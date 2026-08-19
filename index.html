@@ -158,6 +158,39 @@
   .tip h3{color:var(--gold); margin-bottom:10px; font-size:1.05rem;}
   .tip p{color:#d6d4e0;}
 
+  .qa-header{
+    text-align:center;
+    margin:44px 0 22px;
+    padding-top:24px;
+    border-top:1px solid var(--border);
+  }
+  .qa-header h2{
+    font-size:1.6rem;
+    background:linear-gradient(90deg, var(--gold), #f4e5a1);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .qa-header .qa-sub{color:var(--muted); font-size:.9rem; margin-top:6px;}
+
+  .qa-group{margin-bottom:24px;}
+  .qa-group h3{
+    color:var(--gold);
+    font-size:1.05rem;
+    margin-bottom:12px;
+    padding-inline-start:10px;
+    border-inline-start:3px solid var(--gold);
+  }
+  .qa{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:16px 18px;
+    margin-bottom:10px;
+  }
+  .qa .q{color:var(--text); font-weight:600; margin-bottom:8px;}
+  .qa .a{color:#b8b6c4; font-size:.93rem;}
+
   @media print{
     body{background:#fff; color:#000;}
     .section, .table-wrap, .tip{background:#fff; border:1px solid #ccc;}
@@ -368,6 +401,117 @@
     <h3>💡 نصيحة سريعة قبل بكره</h3>
     <p>كل واحد يقرا جزءه مرتين بصوت عالي، ويركز بس على العناوين (٠١-٠٢-٠٣-٠٤) بتاعت جزءه لأنها هي اللي بتفتكرك بالترتيب، والكلام حواليها هيجيلك طبيعي وانت بتتكلم.</p>
   </div>
+
+  <div class="qa-header">
+    <h2>❓ الأسئلة المتوقعة</h2>
+    <p class="qa-sub">جاهزين للرد عليها في الحال لو حد سأل</p>
+  </div>
+
+  <div class="qa-group">
+    <h3>أسئلة عامة</h3>
+    <div class="qa">
+      <p class="q">١. ليه كل المواقع بنفس الـ <span class="en">Skeleton</span>؟ ليه محدش بيعمل حاجة مختلفة؟</p>
+      <p class="a">عشان المتصفح والـ <span class="en">Browser</span> لازم يفهم الصفحة بطريقة موحدة، وده كمان بيساعد في الـ <span class="en">SEO</span> وإمكانية الوصول <span class="en">(Accessibility)</span> للناس اللي بتستخدم قارئ الشاشة.</p>
+    </div>
+    <div class="qa">
+      <p class="q">٢. ينفع موقع من غير <span class="en">Header</span> أو <span class="en">Footer</span>؟</p>
+      <p class="a">تقنياً آه، بس عملياً هيبقى غريب وصعب التنقل فيه، والمتصفحات وأدوات الـ <span class="en">SEO</span> بتفضل وجودهم.</p>
+    </div>
+    <div class="qa">
+      <p class="q">٣. إيه الفرق بين الـ <span class="en">Skeleton</span> ده والـ <span class="en">CSS</span>؟</p>
+      <p class="a">الـ <span class="en">HTML</span> هو الهيكل نفسه (العضم)، والـ <span class="en">CSS</span> هو اللي بيدي الشكل والألوان والستايل (زي الملابس والشعر).</p>
+    </div>
+    <div class="qa">
+      <p class="q">٤. لو مسحت كل الـ <span class="en">CSS</span>، الموقع هيفضل شغال؟</p>
+      <p class="a">آه، هيفضل شغال ويعرض كل المحتوى، بس هيبان شكله زي مستند وورد بسيط أبيض وأسود من غير أي تنسيق — ده بالظبط اللي بيوضح إن الـ <span class="en">HTML</span> والـ <span class="en">CSS</span> شغلانين منفصلين.</p>
+    </div>
+    <div class="qa">
+      <p class="q">٥. الترتيب ده لازم يفضل ثابت في كل المواقع؟</p>
+      <p class="a">آه من ناحية المنطق (البداية، المحتوى، النهاية)، بس التصميم اللي فوقه ممكن يخليه يبان بشكل مختلف تماماً حسب الموقع.</p>
+    </div>
+  </div>
+
+  <div class="qa-group">
+    <h3>عن الـ Header</h3>
+    <div class="qa">
+      <p class="q">٦. الـ <span class="en">Navigation bar</span> لازم تكون فوق دايماً؟</p>
+      <p class="a">الأشهر إنها فوق، بس ممكن تبقى جانب <span class="en">(Sidebar)</span> في بعض التصميمات، المهم إنها سهلة الوصول.</p>
+    </div>
+    <div class="qa">
+      <p class="q">٧. الـ <span class="en">Tagline</span> لازم تكون موجودة؟</p>
+      <p class="a">لأ، اختيارية، بعض المواقع بتستغني عنها لو الـ <span class="en">Logo</span> بيوضح الفكرة لوحده.</p>
+    </div>
+    <div class="qa">
+      <p class="q">٨. ينفع الموقع يكون فيه أكتر من <span class="en">Header</span> واحد؟</p>
+      <p class="a">تقنياً ممكن (زي <span class="en">header</span> جوه <span class="en">article</span>)، بس الـ <span class="en">Header</span> الرئيسي بتاع الصفحة بيبقى واحد بس فوق.</p>
+    </div>
+  </div>
+
+  <div class="qa-group">
+    <h3>عن الـ Body</h3>
+    <div class="qa">
+      <p class="q">٩. إيه الفرق بين <span class="en">section</span> و<span class="en">div</span>؟</p>
+      <p class="a">الـ <span class="en">section</span> عنده معنى دلالي <span class="en">(Semantic)</span> يعني بيقول للمتصفح "دي وحدة محتوى منطقية"، والـ <span class="en">div</span> مجرد صندوق عام من غير معنى.</p>
+    </div>
+    <div class="qa">
+      <p class="q">١٠. لازم كل صفحة يكون فيها <span class="en">Sidebar</span>؟</p>
+      <p class="a">لأ، اختياري، بيتحدد حسب نوع الموقع (مواقع الأخبار والمدونات بتستخدمه أكتر من مواقع الشركات البسيطة).</p>
+    </div>
+    <div class="qa">
+      <p class="q">١١. إيه الفرق بين <span class="en">section</span> و<span class="en">article</span>؟</p>
+      <p class="a">الـ <span class="en">article</span> محتوى مستقل بذاته ممكن ياخده وينشره لوحده (زي بوست أو مقال)، والـ <span class="en">section</span> مجرد تقسيم منطقي جوه الصفحة مش لازم يكون مستقل.</p>
+    </div>
+  </div>
+
+  <div class="qa-group">
+    <h3>عن الـ Footer</h3>
+    <div class="qa">
+      <p class="q">١٢. ليه الناس بتهمل الـ <span class="en">Footer</span> دايماً؟</p>
+      <p class="a">لأنه مش أول حاجة بتتشاف، بس هو اللي بيدي مصداقية وثقة، خصوصاً لو فيه بيانات تواصل حقيقية.</p>
+    </div>
+    <div class="qa">
+      <p class="q">١٣. الـ <span class="en">Footer</span> بيفرق في ترتيب الـ <span class="en">SEO</span>؟</p>
+      <p class="a">آه شوية، لأن فيه روابط داخلية ومعلومات مهمة زي الـ <span class="en">Privacy Policy</span>، بس تأثيره بسيط مقارنة بمحتوى الـ <span class="en">Body</span>.</p>
+    </div>
+  </div>
+
+  <div class="qa-group">
+    <h3>عن الـ Code</h3>
+    <div class="qa">
+      <p class="q">١٤. لازم أتعلم كل التاجز دي عشان أعمل موقع؟</p>
+      <p class="a">لأ، دي أهم 10-12 تاج بس واللي بتتكرر في كل موقع تقريباً، ومنهم تقدر تبني أي حاجة.</p>
+    </div>
+    <div class="qa">
+      <p class="q">١٥. الكود ده شغال لوحده كفاية؟</p>
+      <p class="a">لأ، ده بس الهيكل. لازم <span class="en">CSS</span> للشكل و<span class="en">JavaScript</span> للتفاعل (زي الأزرار والفورمز).</p>
+    </div>
+    <div class="qa">
+      <p class="q">١٦. ينفع أستخدم <span class="en">div</span> بدل كل التاجز دي وأخلص بسرعة؟</p>
+      <p class="a">ينفع تقنياً، بس مش منصوح به لأنك بتخسر الـ <span class="en">Semantic</span> اللي بتساعد الـ <span class="en">SEO</span> وقارئات الشاشة تفهم الصفحة صح.</p>
+    </div>
+  </div>
+
+  <div class="qa-group">
+    <h3>عن الـ Setup</h3>
+    <div class="qa">
+      <p class="q">١٧. إيه اللي بيحصل لو نسيت الـ <span class="en">meta viewport</span>؟</p>
+      <p class="a">الصفحة هتفتح بس مش هتتناسب مع شاشة الموبايل، هتبان زرارة ومزنوقة.</p>
+    </div>
+    <div class="qa">
+      <p class="q">١٨. الـ <span class="en">head</span> والـ <span class="en">header</span> نفس الحاجة؟</p>
+      <p class="a">لأ خالص، ده أشهر لخبطة، الـ <span class="en">head</span> إعدادات مخفية والـ <span class="en">header</span> جزء ظاهر في الصفحة (زي ما اتكلمنا في العرض).</p>
+    </div>
+    <div class="qa">
+      <p class="q">١٩. ليه لازم أكتب <span class="en">&lt;!DOCTYPE html&gt;</span> في كل صفحة؟</p>
+      <p class="a">من غيرها، المتصفح ممكن يفتح الصفحة بوضع قديم اسمه <span class="en">Quirks Mode</span> وده بيسبب مشاكل غريبة في العرض والتنسيق.</p>
+    </div>
+    <div class="qa">
+      <p class="q">٢٠. الـ <span class="en">lang="en"</span> ده بيعمل إيه بالظبط؟</p>
+      <p class="a">بيقول لقارئ الشاشة ومحركات البحث إن لغة الصفحة إنجليزي، وده بيأثر على النطق الصوتي وترتيب نتائج البحث حسب اللغة.</p>
+    </div>
+  </div>
+
+  <div class="analogy" style="margin-top:26px;">💡 لو حد سأل سؤال مش متوقع، أحسن رد: اربطوه بمثال الـ <span class="en">Skeleton</span> (206 عظمة) — بيسهل أي إجابة تقريباً.</div>
 
 </div>
 </body>
